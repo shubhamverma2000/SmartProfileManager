@@ -1,33 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Home Page</title>
-    <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
-</head>
+<html lang="en" th:replace="~{layout :: parent(~{::#content}, 'Home Page', ~{::script})}" xmlns:th="http://www.w3.org/1999/xhtml">
+<head></head>
 <body>
-    <div class="hostDiv" th:insert="~{layout :: parent}"></div>
-
-    <div class="hostDiv" th:insert="~{layout :: parent2('Shubham' , 'Verma')}"></div>
-
-    <div class="hostDiv" th:insert="~{layout :: parentDynamic(~{::.secSection})}">
-        <section class="firstSection">
-            <h1>This is first section</h1>
-        </section>
-        <section class="secSection">
-            <h1>This is Second section</h1>
-        </section>
-        <section id="thirdSection">
-            <h1>This is third section</h1>
-        </section>
-    </div>
-
-    <div class="container text-2xl ">Home Page </div>
-
-
-    <!--    show the appropriate div, in this case the signed out div-->
-    <div class="LoginDiv" th:replace="${isLogin} ? ~{layout :: signedIn} : ~{layout :: signedOut}"></div>
-
+<div id="content">
+    <h1>Welcome to Home page</h1>
     <script src="node_modules/flowbite/dist/flowbite.min.js"></script>
+</div>
 </body>
 </html>

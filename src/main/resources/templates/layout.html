@@ -1,33 +1,17 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en" th:fragment="parent(content, title , script)" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Layout</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
 </head>
 <body>
-    <div class="parentFragment" th:fragment="parent">
-        <h1>This is the parent fragment</h1>
-    </div>
+    <!--    here we need the dynamic content from each page, and here we wil render back the entire page to that particular-->
+    <div th:replace="${content}"></div>
 
-    <div class="parentFragment" th:fragment="parent2(x,y)">
-        <h1> Name <span th:text="${x}"></span></h1>
-        <h1>Surname <span th:text="${y}"></span></h1>
-    </div>
-
-    <div class="parentFragment" th:fragment="parentDynamic(content)">
-       <div th:replace="${content}">
-       </div>
-    </div>
-
-
-    <!--    Show this fragment for signed user -->
-    <div class="signedIn" th:fragment="signedIn">
-        <h1>You are signed in </h1>
-    </div>
-
-    <!--Show this when not signed in -->
-    <div class="signedOut" th:fragment="signedOut">
-        <h1>You are signed out </h1>
-    </div>
+   <th:block th:replace="${script}"></th:block>
 </body>
 </html>
