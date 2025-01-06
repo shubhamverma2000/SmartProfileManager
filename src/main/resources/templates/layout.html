@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Layout</title>
+</head>
+<body>
+    <div class="parentFragment" th:fragment="parent">
+        <h1>This is the parent fragment</h1>
+    </div>
+
+    <div class="parentFragment" th:fragment="parent2(x,y)">
+        <h1> Name <span th:text="${x}"></span></h1>
+        <h1>Surname <span th:text="${y}"></span></h1>
+    </div>
+
+    <div class="parentFragment" th:fragment="parentDynamic(content)">
+       <div th:replace="${content}">
+       </div>
+    </div>
+
+
+    <!--    Show this fragment for signed user -->
+    <div class="signedIn" th:fragment="signedIn">
+        <h1>You are signed in </h1>
+    </div>
+
+    <!--Show this when not signed in -->
+    <div class="signedOut" th:fragment="signedOut">
+        <h1>You are signed out </h1>
+    </div>
+</body>
+</html>
