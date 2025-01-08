@@ -12,8 +12,16 @@
   "dependencies": {
     "flowbite": "^2.5.2"
   },
-  "description": "",
   "devDependencies": {
     "tailwindcss": "^3.4.17"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shubhamverma2000/SmartProfileManager.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shubhamverma2000/SmartProfileManager/issues"
+  },
+  "homepage": "https://github.com/shubhamverma2000/SmartProfileManager#readme",
+  "description": ""
 }
