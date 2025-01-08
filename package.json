@@ -1,7 +1,6 @@
 {
   "name": "smartcontactmanager",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -10,10 +9,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "tailwindcss": "^3.4.17"
-  },
   "dependencies": {
     "flowbite": "^2.5.2"
+  },
+  "description": "",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
   }
 }
