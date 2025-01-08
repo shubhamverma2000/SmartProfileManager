@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" th:fragment="parent(content, title , script)" xmlns:th="http://www.w3.org/1999/xhtml">
+<html class="light" lang="en" th:fragment="parent(content, title)" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -7,11 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title th:text="${title}"></title>
     <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <!--  The Navbar Component  -->
+    <div th:insert="~{Navbar :: navbar}"></div>
     <!--    here we need the dynamic content from each page, and here we wil render back the entire page to that particular-->
-    <div th:replace="${content}"></div>
-
-   <th:block th:replace="${script}"></th:block>
+    <div class="p-4 text-black h-screen w-full dark:bg-gray-900 dark:text-white" >
+        <section th:replace="${content}"></section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 </body>
 </html>
