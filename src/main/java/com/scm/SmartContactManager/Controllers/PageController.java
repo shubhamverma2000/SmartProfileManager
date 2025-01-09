@@ -29,11 +29,6 @@ public class PageController {
         return "login";
     }
 
-    @GetMapping("/signup")
-    public String signup(){
-        return "signup";
-    }
-
     @GetMapping("/contact")
     public String contact(){
         return "contact";
