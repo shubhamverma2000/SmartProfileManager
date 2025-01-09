@@ -1,10 +1,8 @@
 package com.scm.SmartContactManager.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.FetchMode;
 import org.hibernate.validator.internal.util.stereotypes.Lazy;
 
 import java.util.ArrayList;
@@ -19,7 +17,9 @@ import java.util.List;
 @Builder
 public class Contact {
     @Id
-    private String contactId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "contact_id", nullable = false)
+    private Long contactId;
 
     private String name;
     private String address;
@@ -29,8 +29,15 @@ public class Contact {
     private String picture;
     private Boolean favorite =false;
 
-    @OneToMany()
-    private List<SocialLink> socialLink = new ArrayList<>();
+    @OneToMany(
+            fetch = FetchType.EAGER,
+            mappedBy = "contact",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<SocialLink> socialLinks = new ArrayList<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
 }

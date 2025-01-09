@@ -1,11 +1,11 @@
 package com.scm.SmartContactManager.Entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import org.attoparser.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name="user")
 @Table(name="user")
@@ -16,7 +16,10 @@ import org.attoparser.dom.Text;
 @Builder
 public class User {
     @Id
-    private String userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
+
     @Column(name="user_name", nullable = false)
     private String name;
 
@@ -38,5 +41,12 @@ public class User {
     //SELF, GOOGLE, FACEBOOK, TWITTER, LINKEDIN, GITHUB
     private Providers provider= Providers.SELF;
     private String providerUserId;
+
+    @OneToMany(
+            fetch = FetchType.EAGER,
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<Contact> contacts = new ArrayList<>();
 
 }
